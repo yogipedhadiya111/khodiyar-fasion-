@@ -1,26 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>day1 </title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Khodiyar Fashion</title>
+    <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
-    <h1> hiii yogi patel </h1>
-    <h2>yogi pedhadiya is a great person </h2>
-    <h3>this is a great movment is okay  rajkot </h3>
-    <h1>this is a great person </h1>
-    <h2>yogi pedhadiya is paython devloper okay </h2>
-    <h10>this is a small line oky patel </h10>
-    <h3>introdction is yogi patel okay 
-        yogi patel is pedhadiya famaliy to patel and i am a full stack devloper and app devloper and devops enginer 
-    </h3>
-    
+    <header>
+        <div class="logo">Khodiyar Fashion</div>
+        <nav id="navbar" class="nav">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="myyogi.html">Web developer</a></li>
+            </ul>
+        </nav>
+        <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Welcome to Khodiyar Fashion</h1>
+            <p>Where tradition meets trend.</p>
+            <a href="#services" class="btn">Explore Now</a>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <h2>About Us</h2>
+        <p>Khodiyar Fashion brings you a curated collection of traditional and modern Indian wear for every occasion.
+        </p>
+    </section>
+
+    <section id="services" class="services">
+        <h2>Our Services</h2>
+        <div class="service-grid">
+            <div class="service-card" onclick="location.href='products.html'">
+                Our Products
+            </div>
+
+            <div class="service-card" onclick="location.href='Customer-feedback.html'">
+                Customer Feedback Form
+            </div>
+
+            <div class="service-card" onclick="location.href='klocation.html'">
+                Our store Location
+            </div>
+            <div class="service-card" onclick="location.href='order.html'">
+                Order Online
+            </div>
 
 
-    <h1>this is my first website </h1>
-    <p> my family is good </p>
+        </div>
+    </section>
 
-    
+    <footer id="contact">
+        <p>&copy; 2025 Khodiyar Fashion. All Rights Reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
-<
+
+</html>

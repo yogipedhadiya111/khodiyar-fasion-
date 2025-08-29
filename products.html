@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Our Products | Khodiyar Fashion</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      display: flex;
+      min-height: 100vh;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 300px;
+      background: #fff;
+      border-right: 1px solid #ddd;
+      padding: 20px;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .sidebar h2 {
+      color: #e91e63;
+      margin-bottom: 20px;
+    }
+
+    .product-details {
+      display: none;
+      animation: fadeIn 0.3s ease-in-out;
+    }
+
+    .product-details.active {
+      display: block;
+    }
+
+    .product-details h3 {
+      margin-bottom: 10px;
+      color: #111;
+    }
+
+    .product-details p {
+      font-size: 15px;
+      line-height: 1.5;
+      margin-bottom: 10px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Main content */
+    .main-content {
+      flex: 1;
+      padding: 30px;
+    }
+
+    .header {
+      font-size: 32px;
+      color: #e91e63;
+      margin-bottom: 20px;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+    .product-card {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .product-card .info {
+      padding: 15px;
+    }
+
+    .product-card h3 {
+      font-size: 18px;
+      margin-bottom: 8px;
+      color: #111;
+    }
+
+    .product-card p {
+      font-size: 14px;
+      color: #777;
+    }
+
+    /* Responsive Sidebar */
+    @media (max-width: 768px) {
+      .sidebar {
+        position: fixed;
+        left: -100%;
+        top: 0;
+        height: 100%;
+        z-index: 1000;
+        transition: left 0.3s ease-in-out;
+      }
+
+      .sidebar.open {
+        left: 0;
+      }
+
+      .toggle-btn {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        background: #e91e63;
+        color: #fff;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 4px;
+        cursor: pointer;
+        z-index: 1100;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <h2>Product Details</h2>
+    <div id="detailsContainer" class="product-details">
+      <h3>Select a product</h3>
+      <p>Click any product card to view details here.</p>
+    </div>
+  </aside>
+
+  <!-- Toggle Button (For Mobile) -->
+  <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <h1 class="header">Our Products</h1>
+    <div class="product-grid" id="productGrid">
+      <!-- Product Cards -->
+      <div class="product-card" onclick="showDetails('Designer Saree', 'Elegant silk saree with zari border. Perfect for weddings and festive occasions.', 'https://source.unsplash.com/300x300/?saree')">
+        <img src="https://source.unsplash.com/300x300/?saree" alt="Designer Saree">
+        <div class="info">
+          <h3>Designer Saree</h3>
+          <p>Elegant silk saree</p>
+        </div>
+      </div>
+
+      <div class="product-card" onclick="showDetails('Bridal Lehenga', 'Heavily embroidered bridal lehenga with rich fabrics and traditional motifs.', 'https://source.unsplash.com/300x300/?lehenga')">
+        <img src="https://source.unsplash.com/300x300/?lehenga" alt="Bridal Lehenga">
+        <div class="info">
+          <h3>Bridal Lehenga</h3>
+          <p>Royal bridal wear</p>
+        </div>
+      </div>
+
+      <div class="product-card" onclick="showDetails('Kurti Collection', 'Trendy and comfortable kurtis for daily and festive wear.', 'https://source.unsplash.com/300x300/?kurti')">
+        <img src="https://source.unsplash.com/300x300/?kurti" alt="Kurti Collection">
+        <div class="info">
+          <h3>Kurti Collection</h3>
+          <p>Stylish kurtis</p>
+        </div>
+      </div>
+
+      <div class="product-card" onclick="showDetails('Men\'s Sherwani', 'Premium sherwanis for grooms and formal occasions. Available in all sizes.', 'https://source.unsplash.com/300x300/?sherwani')">
+        <img src="https://source.unsplash.com/300x300/?sherwani" alt="Men's Sherwani">
+        <div class="info">
+          <h3>Men's Sherwani</h3>
+          <p>Ethnic menswear</p>
+        </div>
+      </div>
+
+      <!-- Add more products here -->
+    </div>
+  </main>
+
+  <script>
+    // Show product details in sidebar
+    function showDetails(title, description, imageUrl) {
+      const container = document.getElementById("detailsContainer");
+      container.classList.add("active");
+      container.innerHTML = `
+        <img src="${imageUrl}" alt="${title}" style="width:100%; border-radius:8px; margin-bottom:15px;" />
+        <h3>${title}</h3>
+        <p>${description}</p>
+      `;
+
+      // Open sidebar on mobile
+      const sidebar = document.getElementById('sidebar');
+      if (window.innerWidth <= 768) {
+        sidebar.classList.add('open');
+      }
+    }
+
+    // Toggle sidebar on mobile
+    function toggleSidebar() {
+      document.getElementById('sidebar').classList.toggle('open');
+    }
+  </script>
+
+</body>
+</html>

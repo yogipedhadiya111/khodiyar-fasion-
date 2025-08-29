@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About </title>
+  <style>
+    /* Base Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background-color: #fff;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: #000;
+      color: #fff;
+      padding: 20px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #e91e63;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin-left: 20px;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #e91e63;
+    }
+
+    .hero {
+      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+        url('https://source.unsplash.com/1600x600/?textile,fashion') no-repeat center center/cover;
+      height: 60vh;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .hero h1 {
+      font-size: 48px;
+      text-shadow: 2px 2px 8px #000;
+    }
+
+    .about-section {
+      padding: 60px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .about-section h2 {
+      font-size: 36px;
+      color: #e91e63;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .about-section p {
+      font-size: 18px;
+      margin-bottom: 15px;
+      text-align: justify;
+    }
+
+    .highlight {
+      color: #e91e63;
+      font-weight: bold;
+    }
+
+    .faq-section {
+      margin-top: 50px;
+    }
+
+    .faq {
+      margin: 10px 0;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .faq-question {
+      background: #f9f9f9;
+      padding: 15px 20px;
+      cursor: pointer;
+      position: relative;
+      font-weight: 600;
+    }
+
+    .faq-question::after {
+      content: '+';
+      position: absolute;
+      right: 20px;
+      font-size: 20px;
+      transition: transform 0.3s;
+    }
+
+    .faq.active .faq-question::after {
+      transform: rotate(45deg);
+    }
+
+    .faq-answer {
+      display: none;
+      padding: 15px 20px;
+      background: #fff;
+    }
+
+    .faq.active .faq-answer {
+      display: block;
+    }
+
+    footer {
+      background-color: #111;
+      color: #bbb;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+
+    /* Scroll reveal animation */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.6s ease;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 32px;
+      }
+
+      .about-section p {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">Khodiyar Fashion</div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="#faq">FAQs</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>About Khodiyar Fashion</h1>
+  </section>
+
+  <section class="about-section reveal">
+    <h2>Who We Are</h2>
+    <p><span class="highlight">Khodiyar Fashion</span> is a leading ethnic fashion brand located in the heart of India. We bring a stunning collection of traditional and contemporary clothing that celebrates Indian culture with a modern twist.</p>
+    <p>From designer sarees to bridal lehengas and custom tailoring, our products are crafted with precision, quality, and passion. We serve clients locally and globally, ensuring each piece reflects elegance and authenticity.</p>
+    <p>Our team of expert artisans and designers continually innovate to stay ahead of fashion trends while preserving cultural roots.</p>
+  </section>
+
+  <section class="about-section faq-section reveal" id="faq">
+    <h2>Frequently Asked Questions</h2>
+
+    <div class="faq">
+      <div class="faq-question">Do you provide custom tailoring services?</div>
+      <div class="faq-answer">Yes, we offer fully personalized tailoring for all types of outfits to ensure the perfect fit and style.</div>
+    </div>
+
+    <div class="faq">
+      <div class="faq-question">Where are you located?</div>
+      <div class="faq-answer">We are located in Surat, Gujarat, India. Visit our store or shop online!</div>
+    </div>
+
+    <div class="faq">
+      <div class="faq-question">Do you ship internationally?</div>
+      <div class="faq-answer">Absolutely! We ship our exclusive collections worldwide with secure and fast delivery options.</div>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 Khodiyar Fashion. Crafted with ♥ in India.
+  </footer>
+
+  <script>
+    // Scroll animation
+    const reveals = document.querySelectorAll(".reveal");
+
+    window.addEventListener("scroll", () => {
+      for (let i = 0; i < reveals.length; i++) {
+        const windowHeight = window.innerHeight;
+        const revealTop = reveals[i].getBoundingClientRect().top;
+        const revealPoint = 150;
+
+        if (revealTop < windowHeight - revealPoint) {
+          reveals[i].classList.add("active");
+        }
+      }
+    });
+
+    // FAQ Toggle
+    const faqs = document.querySelectorAll(".faq");
+
+    faqs.forEach(faq => {
+      faq.querySelector(".faq-question").addEventListener("click", () => {
+        faq.classList.toggle("active");
+      });
+    });
+  </script>
+</body>
+</html>
