@@ -1,0 +1,35 @@
+.social-icons-right {
+    position: fixed;
+    top: 100px; /* Increased to 100px to move it down */
+    right: 50px;
+    z-index: 10000;
+    display: flex;
+    gap: 15px;
+    /* Adjusted gap for the boxes */
+}
+
+.social-icons-right a {
+    /* Box Properties */
+    width: 45px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #FFD700;
+    border-radius: 8px; /* Slightly rounded corners */
+    background-color: rgba(0, 0, 0, 0.2); /* Optional: Slight dark background */
+    
+    /* Icon and Transition */
+    color: #FFD700; /* Pure Golden Color */
+    font-size: 24px; /* Adjusted font size to fit in the box */
+    text-decoration: none;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease, color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.social-icons-right a:hover {
+    transform: scale(2.2);
+    background-color: #FFD700; /* Fill with gold on hover */
+    color: #000000; /* Changes icon to black for contrast */
+    border-color: #FFFFFF; /* Changes border to white on hover */
+}
